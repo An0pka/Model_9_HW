@@ -1,7 +1,7 @@
 import java.util.Arrays;
 
 public class MyQueue {
-    Object [] list = new Object[10];
+    Object [] list = new Object[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
     public Object[] add(Object value){
         list[list.length -1] = value;
         return list;
@@ -17,13 +17,15 @@ public class MyQueue {
     }
     public Object poll(){
         Object [] newList = new Object[list.length-1];
-        for (int i = 0; i < list.length; i++) {
-            if (i != 1){
-                newList[i] = list[i];
+        for (int i = list.length-1; i >= 0; i--){
+            if(i != 0){
+                newList[i-1] = list[i];
+            } else {
+                return list[i];
             }
-        return list[0];
-    }
+        }return null;
 
+    }
     public static void main(String[] args) {
         MyQueue myQueue = new MyQueue();
         System.out.println(Arrays.toString(myQueue.add("lol")));
